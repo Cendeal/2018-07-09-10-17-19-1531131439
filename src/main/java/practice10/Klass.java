@@ -20,7 +20,8 @@ public class Klass {
     }
 
     public boolean isIn(Student student) {
-        return this.members.contains(student);
+//        return this.members.contains(student);
+        return this.getNumber() == student.getKlass().getNumber();
     }
 
     public boolean isLeader(Student student) {
@@ -28,7 +29,11 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
-        if (this.members.contains(student)) {
+//        if (this.members.contains(student)) {
+//            this.leader = student;
+//            return;
+//        }
+        if (isIn(student)) {
             this.leader = student;
             return;
         }
