@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Teacher extends Person implements JoinListener{
+public class Teacher extends Person implements JoinListener {
     private final LinkedList<Klass> classes;
 
     public Teacher(int id, String name, int age) {
@@ -15,6 +15,7 @@ public class Teacher extends Person implements JoinListener{
     public Teacher(int id, String name, int age, LinkedList<Klass> classes) {
         super(id, name, age);
         this.classes = classes;
+        this.classes.forEach(klass -> klass.registerListener(this));
     }
 
     public boolean isTeaching(Student student) {
@@ -44,7 +45,9 @@ public class Teacher extends Person implements JoinListener{
     }
 
     @Override
-    public void update(Person person) {
+    public void update(Student student) {
+        System.out.print(String.format("I am %s. I know %s has joined Class %s.\n",
+                this.getName(), student.getName(), student.getKlass().getNumber()));
     }
 }
 

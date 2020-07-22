@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Klass {
     private int number;
@@ -20,12 +19,29 @@ public class Klass {
         joinListeners = new ArrayList<>();
     }
 
+    public void registerListener(JoinListener joinListener) {
+        this.joinListeners.add(joinListener);
+    }
+
+    public void unregisterListener(JoinListener joinListener) {
+        this.joinListeners.remove(joinListener);
+    }
+
+    public void notify(Student student) {
+        this.joinListeners.forEach(joinListener -> {
+            joinListener.update(student);
+        });
+    }
+
     public void appendMember(Student student) {
-        this.members.add(student);
+        if (this.members.add(student)) {
+            this.notify(student);
+        }
     }
 
     public boolean isIn(Student student) {
-        return this.members.contains(student);
+        return student.getKlass().getNumber() == this.getNumber();
+//        return this.members.contains(student);
     }
 
     public boolean isLeader(Student student) {
@@ -33,10 +49,14 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
-        if (this.members.contains(student)) {
+        if (this.isIn(student)) {
             this.leader = student;
             return;
         }
+//        if (this.members.contains(student)) {
+//            this.leader = student;
+//            return;
+//        }
         System.out.print("It is not one of us.\n");
     }
 
