@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Teacher extends Person {
-    private  LinkedList<Klass> classes;
+    private final LinkedList<Klass> classes;
 
     public Teacher(int id, String name, int age) {
         this(id, name, age, new LinkedList<>());
