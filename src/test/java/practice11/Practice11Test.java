@@ -8,6 +8,8 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
 
 public class Practice11Test {
     private Klass klass2;

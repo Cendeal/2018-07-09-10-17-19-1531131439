@@ -10,32 +10,34 @@ public class Klass {
     private int number;
     private Student leader;
     private final Set<Student> members;
-    private Collection<JoinListener> joinListeners;
+    private Collection<IKlassListenner> IKlassListenners;
 
 
     public Klass(int number) {
         this.members = new HashSet<>();
-        this.number = number;
-        joinListeners = new ArrayList<>();
+        this.setNumber(number);
+        IKlassListenners = new ArrayList<>();
     }
 
-    public void registerListener(JoinListener joinListener) {
-        this.joinListeners.add(joinListener);
+    public void registerListener(IKlassListenner IKlassListenner) {
+        this.IKlassListenners.add(IKlassListenner);
     }
 
-    public void unregisterListener(JoinListener joinListener) {
-        this.joinListeners.remove(joinListener);
+    public void unregisterListener(IKlassListenner IKlassListenner) {
+        this.IKlassListenners.remove(IKlassListenner);
     }
 
-    public void notify(Student student) {
-        this.joinListeners.forEach(joinListener -> {
-            joinListener.update(student);
+    public void notify(String msg) {
+        IKlassListenners.forEach(IKlassListenner -> {
+            IKlassListenner.update(msg);
         });
     }
 
     public void appendMember(Student student) {
         if (this.members.add(student)) {
-            this.notify(student);
+            student.setKlass(this);
+            String msg = String.format(" I know %s has joined Class %s.", student.getName(), student.getKlass().getNumber());
+            this.notify(msg);
         }
     }
 
@@ -51,12 +53,10 @@ public class Klass {
     public void assignLeader(Student student) {
         if (this.isIn(student)) {
             this.leader = student;
+            String msg = String.format(" I know %s become Leader of Class %s.", student.getName(), student.getKlass().getNumber());
+            this.notify(msg);
             return;
         }
-//        if (this.members.contains(student)) {
-//            this.leader = student;
-//            return;
-//        }
         System.out.print("It is not one of us.\n");
     }
 

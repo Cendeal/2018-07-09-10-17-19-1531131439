@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Teacher extends Person implements JoinListener {
+public class Teacher extends Person implements IKlassListenner {
     private final LinkedList<Klass> classes;
 
     public Teacher(int id, String name, int age) {
@@ -35,9 +35,8 @@ public class Teacher extends Person implements JoinListener {
     }
 
     public String introduceWith(Student student) {
-        boolean isTechTheStudent = this.isTeaching(student);
         return super.introduce() + String.format(" I am a Teacher. I%s teach %s.",
-                isTechTheStudent ? "" : " don't", student.getName());
+                isTeaching(student) ? "" : " don't", student.getName());
     }
 
     public LinkedList<Klass> getClasses() {
@@ -45,9 +44,10 @@ public class Teacher extends Person implements JoinListener {
     }
 
     @Override
-    public void update(Student student) {
-        System.out.print(String.format("I am %s. I know %s has joined Class %s.\n",
-                this.getName(), student.getName(), student.getKlass().getNumber()));
+    public void update(String msg) {
+        String result = String.format("I am %s.%s\n",
+                this.getName(), msg);
+        System.out.print(result);
     }
 }
 
