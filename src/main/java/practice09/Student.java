@@ -1,7 +1,7 @@
 package practice09;
 
 
-public class Student extends Person{
+public class Student extends Person {
     private Klass klass;
 
     public Student(int id, String name, int age, Klass klass) {

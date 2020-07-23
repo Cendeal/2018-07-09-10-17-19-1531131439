@@ -1,12 +1,13 @@
 package practice10;
 
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Teacher extends Person {
-    private final LinkedList<Klass> classes;
+    private final Collection<Klass> classes;
 
     public Teacher(int id, String name, int age) {
         this(id, name, age, new LinkedList<>());
@@ -38,7 +39,7 @@ public class Teacher extends Person {
                 isTeaching(student) ? "" : " don't", student.getName());
     }
 
-    public LinkedList<Klass> getClasses() {
+    public Collection<Klass> getClasses() {
         return classes;
     }
 }

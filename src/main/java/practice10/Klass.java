@@ -1,13 +1,13 @@
 package practice10;
 
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Klass {
     private int number;
     private Student leader;
-    private final Set<Integer> memberIds;
+    private final Collection<Integer> memberIds;
 
 
     public Klass(int number) {

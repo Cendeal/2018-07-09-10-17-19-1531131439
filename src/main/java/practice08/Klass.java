@@ -8,19 +8,20 @@ public class Klass {
         this.number = number;
     }
 
-    public boolean isLeader(Student student){
+    public boolean isLeader(Student student) {
         return this.leader != null && this.leader.getId() == student.getId();
     }
 
-    public void assignLeader(Student student){
+    public void assignLeader(Student student) {
         this.leader = student;
     }
 
-    public Student getLeader(){
+    public Student getLeader() {
         return this.leader;
     }
-    public String getDisplayName(){
-        return String.format("Class %d",this.getNumber());
+
+    public String getDisplayName() {
+        return String.format("Class %d", this.getNumber());
     }
 
     public int getNumber() {

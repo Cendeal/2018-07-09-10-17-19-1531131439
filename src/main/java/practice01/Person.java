@@ -4,6 +4,10 @@ public class Person {
     private String name;
     private int age;
 
+    public Person(String name, int age) {
+        this.setAge(age);
+        this.setName(name);
+    }
 
     public String introduce() {
         return String.format("My name is %s. I am %d years old.", this.name, this.age);
@@ -23,11 +27,6 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public Person(String name, int age) {
-        this.age = age;
-        this.name = name;
     }
 
 }

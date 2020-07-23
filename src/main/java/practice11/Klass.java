@@ -10,7 +10,7 @@ public class Klass {
     private int number;
     private Student leader;
     private final Set<Student> members;
-    private Collection<IKlassListenner> IKlassListenners;
+    private final Collection<IKlassListenner> IKlassListenners;
 
 
     public Klass(int number) {
@@ -43,7 +43,6 @@ public class Klass {
 
     public boolean isIn(Student student) {
         return student.getKlass().getNumber() == this.getNumber();
-//        return this.members.contains(student);
     }
 
     public boolean isLeader(Student student) {

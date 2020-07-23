@@ -10,7 +10,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 public class Practice09Test {
     private Klass klass;
-    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setup() {

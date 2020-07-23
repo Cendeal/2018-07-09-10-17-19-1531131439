@@ -11,7 +11,7 @@ public class Student extends Person {
 
     @Override
     public String introduce() {
-        return String.format("My name is %s. I am %d years old. I am a Student. I am at Class %d.", this.getName(),this.getAge(),this.klass);
+        return String.format("My name is %s. I am %d years old. I am a Student. I am at Class %d.", this.getName(), this.getAge(), this.klass);
     }
 
     public Student(String name, int age) {
