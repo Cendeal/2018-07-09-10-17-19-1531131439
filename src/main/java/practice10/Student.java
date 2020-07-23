@@ -7,6 +7,8 @@ public class Student extends Person {
     public Student(int id, String name, int age, Klass klass) {
         super(id, name, age);
         this.setKlass(klass);
+        this.klass.appendMember(this);
+
     }
 
     private boolean isLeader() {
@@ -26,6 +28,5 @@ public class Student extends Person {
 
     public void setKlass(Klass klass) {
         this.klass = klass;
-        this.klass.appendMember(this);
     }
 }
