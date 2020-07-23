@@ -34,9 +34,8 @@ public class Teacher extends Person {
     }
 
     public String introduceWith(Student student) {
-        boolean isTechTheStudent = this.isTeaching(student);
         return super.introduce() + String.format(" I am a Teacher. I%s teach %s.",
-                isTechTheStudent ? "" : " don't", student.getName());
+                isTeaching(student) ? "" : " don't", student.getName());
     }
 
     public LinkedList<Klass> getClasses() {

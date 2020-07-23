@@ -7,21 +7,20 @@ import java.util.Set;
 public class Klass {
     private int number;
     private Student leader;
-    private final Set<Student> members;
+    private final Set<Integer> memberIds;
 
 
     public Klass(int number) {
-        this.members = new HashSet<>();
-        this.number = number;
+        this.memberIds = new HashSet<>();
+        this.setNumber(number);
     }
 
     public void appendMember(Student student) {
-        this.members.add(student);
+        this.memberIds.add(student.getId());
     }
 
     public boolean isIn(Student student) {
-//        return this.members.contains(student);
-        return this.getNumber() == student.getKlass().getNumber();
+        return this.memberIds.contains(student.getId());
     }
 
     public boolean isLeader(Student student) {
@@ -29,10 +28,6 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
-//        if (this.members.contains(student)) {
-//            this.leader = student;
-//            return;
-//        }
         if (isIn(student)) {
             this.leader = student;
             return;
